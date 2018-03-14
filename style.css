@@ -1,0 +1,9 @@
+.center {
+    margin: auto;
+    width: 50%;
+}
+#gameContainer{
+    width: 640px; 
+    height: 960px; 
+    margin:"auto"
+}
