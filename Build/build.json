@@ -1,5 +1,5 @@
 {
-"TOTAL_MEMORY": 67108864,
+"TOTAL_MEMORY": 33554432,
 "dataUrl": "build.data.unityweb",
 "asmCodeUrl": "build.asm.code.unityweb",
 "asmMemoryUrl": "build.asm.memory.unityweb",
