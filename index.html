@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | WeddingMarch</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>  
-    <script src="Build/UnityLoader.js"></script>
-    <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/build.json", {onProgress: UnityProgress});
-    </script>
-  </head>
-  <body>
-    <div class="webgl-content">
-      <div id="gameContainer" style="width: 750px; height: 1334px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">WeddingMarch</div>
-      </div>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wedding Match</title>
+  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <link rel="stylesheet" href="TemplateData/style.css">
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+  <script>
+    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/build.json", { onProgress: UnityProgress });
+  </script>
+</head>
+
+<body>
+  <button onclick="SetFullscreen"></button>
+  <div class="webgl-content">
+    <div id="gameContainer" style="width: 750px; height: 1334px" hidden="hidden"></div>
+    <div class="footer">
+      <div class="webgl-logo"></div>
+      <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+      <div class="title">WeddingMarch</div>
     </div>
-  </body>
+        <div>
+          해상도가 모바일에 최적화 되어 있습니다. <br>
+          전체화면보기를 누르시거나 크롬의 모바일 보기를 활용해주세요(iOS는 불가 ㅠ).
+        </div>
+  </div>
+</body>
+
+<script>
+      function SetFullscreen(){
+          let gameContainer = document.getElementById("gameContainer");
+          gameContainer.style.width = screen.width;
+          gameContainer.style.height = screen.height;
+          gameContainer.hidden = false;
+      }
+
+</script>
+
 </html>
