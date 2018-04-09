@@ -21,7 +21,8 @@
         <br> 아래에서 해상도를 선택해주세요.
         <form id="readyForm">
             <select id="resolution" onchange="onChangeResolution()">
-                <option value="640-960" selected="selected">640 x 960 (아이폰 4)</option>
+                <option value="auto" selected="selected">자동(브라우저 크기에 맞춰집니다)</option>
+                <option value="640-960">640 x 960 (아이폰 4)</option>
                 <option value="640-1136">640 x 1136 (아이폰 5)</option>
                 <option value="750-1280">750 x 1280 (갤럭시 S2 HD, 갤럭시 S3, 갤노트2)</option>
                 <option value="750-1334">750 x 1334 (아이폰 6,6S,7,8)</option>
@@ -72,20 +73,25 @@
         return 'width=' + width + "&" + "height=" + height;
     }
 
+    function openGame() {
+        window.open(getUrl(), "", getPopupOption());
+    }
+
+    function getUrl() {
+        let gameUrl = 'play';
+        if (document.getElementById('resolution').value === 'auto')
+            return gameUrl;
+        else
+            return gameUrl + "?" + getQueryString();
+    }
+
     function getPopupOption() {
+        if (document.getElementById('resolution').value === 'auto')
+            return "";
         let width = getWidth();
         let height = getHeight();
         return 'width=' + width + "," + "height=" + height;
     }
-
-
-    function openGame() {
-        let gameUrl = 'play';
-        let url = gameUrl + "?" + getQueryString();
-        window.open(url, "", getPopupOption());
-    }
-
-
 </script>
 
 </html>
