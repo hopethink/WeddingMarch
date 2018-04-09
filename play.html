@@ -15,11 +15,11 @@
         let url = new URL(location.href);                
         let width = Number(url.searchParams.get('width'));
         let height = Number(url.searchParams.get('height'));
-        width = width ? width : window.width * 0.8;
-        height = height ? height : window.height * 0.8;
+        width = width ? width : window.innerWidth;
+        height = height ? height : window.innerHeight;
         let panel = document.getElementById("gameContainer");
-        panel.style.width = width + "px";
-        panel.style.height = height + "px";  
+        panel.style.width = width * 0.8 + "px";
+        panel.style.height = height * 0.8 + "px";  
         console.log("adjust gameConatiner to " + width + "x" + height);        
     }
   </script>  
