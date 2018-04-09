@@ -11,7 +11,13 @@
   <script src="Build/UnityLoader.js"></script>
   <script>
     var gameInstance = UnityLoader.instantiate("gameContainer", "Build/build.json", { onProgress: UnityProgress });
+    let adjust = function(){
+        let panel = document.getElementById("gameContainer");
+        panel.width = screen.width;
+        panel.height = screen.height;
+    }
   </script>
+  
 </head>
 
 <body>
@@ -19,16 +25,13 @@
      <br><br><br><br><br><br>   
     <br><br>
     <div id="gameContainer" style="width: 1080px; height: 1920px"></div>
+    <script>adjust();</script>
     <div class="footer">
       <div class="webgl-logo"></div>
       <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
       <div class="title">WeddingMarch</div>
     </div>
-    <div align="center" style="border: 2px; border-style: solid; padding:5px;">
-      모바일 브라우저에서는 Unity WebGL 최적화 경고창이 뜰수있습니다. <br>
-      간단한 게임이니 OK를 누르셔도 무방합니다. <br> 
-      잘 보이지 않는 경우 로딩이 끝난 후에 아래 버튼을 누르거나<br>
-      크롬의 모바일 보기를 활용해주세요(iOS는 불가 ㅠ).<br>
+    <div>
       <button onclick="gameInstance.SetFullscreen(1)" style="width: 100px; height: 50px">전체화면 보기</button>
     </div>
 
