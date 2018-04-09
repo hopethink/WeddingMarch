@@ -13,8 +13,9 @@
     var gameInstance = UnityLoader.instantiate("gameContainer", "Build/build.json", { onProgress: UnityProgress });
     let adjust = function(){
         let panel = document.getElementById("gameContainer");
-        panel.width = screen.width;
-        panel.height = screen.height;
+        panel.style.width = screen.width + "px";
+        panel.style.height = screen.height + "px";
+        console.log("adjust");
     }
   </script>
   
