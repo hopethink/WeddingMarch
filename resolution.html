@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div align="center" style="border: 2px; border-style: solid; padding:5px;">
+        모바일 브라우저에서는 Unity WebGL 최적화 경고창이 뜰수있습니다.
+        <br> 간단한 게임이니 OK를 누르셔도 무방합니다.
+        <br> 아래에서 해상도를 선택해주세요.
+        <form id="readyForm">
+            <select id="resolution" onchange="onChangeResolution()">
+                <option value="640-960" selected="selected">640 x 960 (아이폰 4)</option>
+                <option value="640-1136">640 x 1136 (아이폰 5)</option>
+                <option value="750-1280">750 x 1280 (갤럭시 S2 HD, 갤럭시 S3, 갤노트2)</option>
+                <option value="750-1334">750 x 1334 (아이폰 6,6S,7,8)</option>
+                <option value="1080-1920">1080 x 1920 (아이폰 6+,6S+,7+,8+, 갤릭시 S4, S5, 갤노트3)</option>
+                <option value="1125-2436">1125 × 2436 (아이폰 X)</option>
+                <option value="1440-2560">1440 x 2560 (갤럭시 S6, S7, 갤노트4,5,7, G3, G4, G5, V10, V20)</option>
+                <option value="1600-2560">1600 x 2560 (갤럭시 탭S, 갤노트10.1, 갤노트프로12.2)</option>
+                <option value="1440-2880">1440 × 2880 (G6, V30)</option>
+                <option value="1440-2960">1440 × 2960 (갤럭시 S8, S8+, 갤노트8)</option>
+                <option value="custom">직접입력</option>
+            </select>
+            <div id="customInput" hidden="hidden">
+                <input id="customWidth" type="number"> x
+                <input id="customHeight" type="number">
+            </div>
+            <br>
+            <input type="submit" value="시작" onclick="openGame()">
+        </form>
+    </div>
+
+</body>
+<script> 
+
+    function onChangeResolution() {
+        if (document.getElementById('resolution').value === 'custom')
+            document.getElementById('customInput').hidden = "";
+        else
+            document.getElementById('customInput').hidden = "hidden";
+    }
+
+    function getWidth() {
+        let value = document.getElementById('resolution').value;
+        if (value === 'custom')
+            return document.getElementById('customWidth').value;
+        return value.split('-')[0];
+    }
+
+    function getHeight() {
+        let value = document.getElementById('resolution').value;
+        if (value === 'custom')
+            return document.getElementById('customHeight').value;
+        return value.split('-')[1];
+    }
+
+    function getQueryString() {
+        let width = getWidth();
+        let height = getHeight();
+        return 'width=' + width + "&" + "height=" + height;
+    }
+
+    function getPopupOption() {
+        let width = getWidth();
+        let height = getHeight();
+        return 'width=' + width + "," + "height=" + height;
+    }
+
+
+    function openGame() {
+        let gameUrl = 'play';
+        let url = gameUrl + "?" + getQueryString();
+        window.open(url, "", getPopupOption());
+    }
+
+
+</script>
+
+</html>
