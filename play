@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wedding Match</title>
+  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <link rel="stylesheet" href="TemplateData/style.css">
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+  <script>
+    var gameInstance = UnityLoader.instantiate("gameContainer", "Build/build.json", { onProgress: UnityProgress });
+    let adjust = function(){
+        let url = new URL(location.href);                
+        let width = Number(url.searchParams.get('width'));
+        let height = Number(url.searchParams.get('height'));
+        width = width ? width : screen.width;
+        height = height ? height : screen.height;
+        let panel = document.getElementById("gameContainer");
+        panel.style.width = width + "px";
+        panel.style.height = height + "px";  
+        console.log("adjust gameConatiner to " + width + "x" + height);        
+    }
+  </script>  
+</head>
+
+<body>
+  <div class="webgl-content">    
+    <div id="gameContainer" style="width: 1080px; height: 1920px"></div>
+    <script>adjust();</script>
+    <div class="footer">
+      <div class="webgl-logo"></div>
+      <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+      <div class="title">WeddingMarch</div>
+    </div>
+  </div>
+</body>
+</html>
