@@ -12,14 +12,23 @@
   <script>
     var gameInstance = UnityLoader.instantiate("gameContainer", "Build/build.json", { onProgress: UnityProgress });
     let adjust = function(){
-        let url = new URL(location.href);                
-        let width = Number(url.searchParams.get('width'));
+        // Get Params
+        let url = new URL(location.href);         
         let height = Number(url.searchParams.get('height'));
-        width = width ? width : window.innerWidth;
-        height = height ? height : window.innerHeight;
+        let ratio = Number(url.searchParams.get('ratio'));              
+        let padding = Number(url.searchParams.get('padding'));
+      
+        // Calc Final Resolution
+        height = height || window.innerHeight;
+        ratio = ratio || 0.5625; // 0.5625 is 9:16
+        padding = padding || 0.2;
+        let finalWidth = height * ratio * (1 - padding);
+        let finalHeight = height * (1 - padding);
+        
+        // Set Final Resolution
         let panel = document.getElementById("gameContainer");
-        panel.style.width = width * 0.8 + "px";
-        panel.style.height = height * 0.8 + "px";  
+        panel.style.width = finalWidth + "px";
+        panel.style.height = finalHeight + "px";
         console.log("adjust gameConatiner to " + width + "x" + height);        
     }
   </script>  
