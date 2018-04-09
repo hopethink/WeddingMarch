@@ -12,11 +12,12 @@
   <script>
     var gameInstance = UnityLoader.instantiate("gameContainer", "Build/build.json", { onProgress: UnityProgress });
     let adjust = function(){
-        let panel = document.getElementById("gameContainer");
+        let url = new URL(location.href);                
         let width = Number(url.searchParams.get('width'));
         let height = Number(url.searchParams.get('height'));
         width = width ? width : screen.width;
         height = height ? height : screen.height;
+        let panel = document.getElementById("gameContainer");
         panel.style.width = width + "px";
         panel.style.height = height + "px";  
         console.log("adjust gameConatiner to " + width + "x" + height);        
